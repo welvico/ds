@@ -21,6 +21,7 @@ if [ $# -eq 0 ]; then
   echo "13. 湖南电信（Hunan_282）"
   echo "14. 甘肃电信（Gansu_105）"
   echo "15. 河北联通（Hebei_313）"
+  echo "16. 河南联通（Henan_338）"
   echo "0. 全部"
   read -t 10 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
 
@@ -110,9 +111,14 @@ case $city_choice in
         stream="rtp/239.253.93.134:6631"
         channel_key="河北联通"
         ;;
+    16)
+	city="Henan_338"
+	stream="rtp/225.1.4.73:1102"
+	channel_key="河南联通"
+	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..15}; do
+        for option in {1..16}; do
           bash  ./multi_test.sh $option  # 假定script_name.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -244,6 +250,8 @@ echo "甘肃电信,#genre#" >>zubo.txt
 cat txt/Gansu_105.txt >>zubo.txt
 echo "河北联通,#genre#" >>zubo.txt
 cat txt/Hebei_313.txt >>zubo.txt
+echo "河南联通,#genre#" >>zubo.txt
+cat txt/Henan_338.txt >>zubo.txt
 
 # scp root@你的服务器:/speedtest/mylist.txt .
 # sed -i '/^上海电信/,$d' mylist.txt
