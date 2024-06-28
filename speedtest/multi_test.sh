@@ -6,7 +6,7 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 上海电信（Shanghai_103）"
+  echo "1. 河南联通（Henan_338）"
   echo "2. 北京联通（Beijing_liantong_145）"
   echo "3. 四川电信（Sichuan_333）"
   echo "4. 浙江电信（Zhejiang_120）"
@@ -21,7 +21,7 @@ if [ $# -eq 0 ]; then
   echo "13. 湖南电信（Hunan_282）"
   echo "14. 甘肃电信（Gansu_105）"
   echo "15. 河北联通（Hebei_313）"
-  echo "16. 河南联通（Henan_338）"
+  echo "16. 上海电信（Shanghai_103）"
   echo "0. 全部"
   read -t 10 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
 
@@ -37,10 +37,10 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Shanghai_103"
-        stream="udp/239.45.1.4:5140"
-	channel_key="上海"
-        ;;
+	city="Henan_338"
+	stream="rtp/225.1.4.73:1102"
+	channel_key="河南联通"
+	;;
     2)
         city="Beijing_liantong_145"
         stream="rtp/239.3.1.236:2000"
@@ -112,10 +112,10 @@ case $city_choice in
         channel_key="河北联通"
         ;;
     16)
-	city="Henan_338"
-	stream="rtp/225.1.4.73:1102"
-	channel_key="河南联通"
-	;;
+        city="Shanghai_103"
+        stream="udp/239.45.1.4:5140"
+	channel_key="上海"
+        ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
         for option in {1..16}; do
@@ -220,8 +220,8 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 
-echo "上海电信,#genre#" >zubo.txt
-cat txt/Shanghai_103.txt >>zubo.txt
+echo "河南联通,#genre#" >>zubo.txt
+cat txt/Henan_338.txt >>zubo.txt
 echo "揭西酒店凤凰,#genre#" >>zubo.txt
 cat txt/Jieyang_129.txt >>zubo.txt
 echo "北京电信,#genre#" >>zubo.txt
@@ -250,8 +250,8 @@ echo "甘肃电信,#genre#" >>zubo.txt
 cat txt/Gansu_105.txt >>zubo.txt
 echo "河北联通,#genre#" >>zubo.txt
 cat txt/Hebei_313.txt >>zubo.txt
-echo "河南联通,#genre#" >>zubo.txt
-cat txt/Henan_338.txt >>zubo.txt
+echo "上海电信,#genre#" >zubo.txt
+cat txt/Shanghai_103.txt >>zubo.txt
 
 # scp root@你的服务器:/speedtest/mylist.txt .
 # sed -i '/^上海电信/,$d' mylist.txt
