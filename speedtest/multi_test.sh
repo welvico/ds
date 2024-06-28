@@ -114,7 +114,7 @@ case $city_choice in
     16)
         city="Shanghai_103"
         stream="udp/239.45.1.4:5140"
-	channel_key="上海"
+	channel_key="上海电信"
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
@@ -250,7 +250,7 @@ echo "甘肃电信,#genre#" >>zubo.txt
 cat txt/Gansu_105.txt >>zubo.txt
 echo "河北联通,#genre#" >>zubo.txt
 cat txt/Hebei_313.txt >>zubo.txt
-echo "上海电信,#genre#" >zubo.txt
+echo "上海电信,#genre#" >>zubo.txt
 cat txt/Shanghai_103.txt >>zubo.txt
 
 # scp root@你的服务器:/speedtest/mylist.txt .
